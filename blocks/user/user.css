@@ -1,0 +1,7 @@
+.user {
+    display: flex;
+    align-items: center;
+    width: 880px;
+    margin: 0;
+    padding: 36px 0 0;
+}

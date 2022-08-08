@@ -1,0 +1,10 @@
+.user__profile {
+    padding-left: 25px;
+    display: grid;
+    grid-template-columns: 300px 250px 150px;
+    grid-template-rows: 62px auto auto;
+    grid-template-areas: 
+    "user-name change-button add-button"
+    "user-info . .";
+    column-gap: 17px;
+}

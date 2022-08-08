@@ -1,0 +1,12 @@
+.user__name {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 42px;
+    line-height: 48px;
+    color: #fff;
+    background-color: #000;
+    border: none;
+    padding: 0;
+    grid-area: user-name;
+}

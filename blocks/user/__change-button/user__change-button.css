@@ -1,0 +1,8 @@
+.user__change-button {
+    grid-area: change-button;
+    width: 24px;
+    height: 24px;
+    background-color: #000;
+    border: 1px solid #fff;
+    align-self: center;
+}
