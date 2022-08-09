@@ -10,6 +10,7 @@
 @import url(../blocks/user/__info/user__info.css);
 @import url(../blocks/user/__image/user__image.css);
 @import url(../blocks/user/__change-button/user__change-button.css);
+@import url(../blocks/user/__change-button/_image/user__change-button_image.css);
 @import url(../blocks/user/__add-button/user__add-button.css);
 @import url(../blocks/places/places.css);
 @import url(../blocks/place/place.css);
@@ -19,3 +20,4 @@
 @import url(../blocks/place/__image/place__image.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__title/footer__title.css);
+

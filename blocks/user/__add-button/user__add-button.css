@@ -5,6 +5,21 @@
     color: #fff;
     font-size: 42px;
     padding: 0;
-    align-self: flex-end;
+    margin-top: 37px;
+    justify-self: end;
     grid-area: add-button;
+    border: 1px solid #fff;
+}
+@media screen and (max-width: 713px) {
+    .user__add-button{
+        width: 282px
+    }
+}
+@media screen and (min-width: 320px) and (max-width: 713px) {
+    .user__add-button{
+        justify-self: center;
+        margin-left: 20px;
+        margin-top: 32px;
+        font-size: 32px;
+    }
 }

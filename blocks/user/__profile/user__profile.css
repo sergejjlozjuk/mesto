@@ -1,10 +1,21 @@
 .user__profile {
-    padding-left: 25px;
     display: grid;
-    grid-template-columns: 300px 250px 150px;
-    grid-template-rows: 62px auto auto;
+    grid-template-columns: 120px 311px minmax(87px, 254px) 150px;
+    grid-template-rows: 72px 34px auto;
     grid-template-areas: 
-    "user-name change-button add-button"
-    "user-info . .";
-    column-gap: 17px;
+    "user-image user-name change-button add-button"
+    ". user-info . .";
+    column-gap: 15px;
+}
+@media screen and (max-width: 713px) {
+    .user__profile{
+        grid-template-areas: 
+        "user-image user-image"
+        "user-name change-button"
+        "user-info ."
+        "add-button .";
+        grid-template-columns: repeat(auto-fit, 226px);
+         grid-template-rows: repeat(auto-fit, 116px);
+         column-gap: 0;
+    }
 }

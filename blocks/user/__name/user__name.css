@@ -9,4 +9,17 @@
     border: none;
     padding: 0;
     grid-area: user-name;
+    max-width: 294px;
+    padding-left: 14px;
+    align-self: end;
+}
+@media screen and (min-width: 320px) and (max-width: 713px) {
+    .user__name{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 27px;
+        line-height: 33px;
+        text-align: center;
+        padding: 30px 0 0 15px;
+    }
 }
