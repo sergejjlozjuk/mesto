@@ -1,6 +1,6 @@
 let change_button = document.querySelector('.user__change-button');
 let popup = document.querySelector('.popup');
-let close_button = document.querySelector('popup__close');
+let close_button = document.querySelector('.popup__close');
 
 function change_name () {
  popup.classList.add('popup_active')
