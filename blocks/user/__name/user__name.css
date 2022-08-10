@@ -13,6 +13,9 @@
     max-width: 296px;
     padding-left: 14px;
     align-self: end;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 @media screen and (min-width: 320px) and (max-width: 713px) {
     .user__name{

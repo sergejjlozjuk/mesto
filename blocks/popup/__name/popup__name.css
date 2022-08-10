@@ -11,3 +11,9 @@
     line-height: 17px;
     margin-bottom: 32px;
 }
+
+@media screen and (max-width: 550px) {
+    .popup__name{
+        width: 238px;
+    }
+}

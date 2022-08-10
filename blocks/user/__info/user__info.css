@@ -10,6 +10,9 @@
     padding: 8px 0 0 15px;
     margin: 0;
     grid-area: user-info;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 @media screen and (min-width: 320px) and (max-width: 713px) {
     .user__info{

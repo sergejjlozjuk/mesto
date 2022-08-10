@@ -4,9 +4,14 @@
     border: none;
     background: none;
     position: relative;
-    top: -334px;
+    top: -333px;
     left: 233px;
 }
 .popup__close:hover{
     opacity: .8;
+}
+@media screen and (max-width: 550px) {
+    .popup__close{
+        left: 131px;
+    }
 }
