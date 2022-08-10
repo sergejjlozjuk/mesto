@@ -13,3 +13,6 @@
     padding: 0;
     height: 50px;
 }
+.popup__submit:hover{
+    opacity: .8;
+}

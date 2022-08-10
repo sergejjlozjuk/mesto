@@ -10,6 +10,9 @@
     grid-area: add-button;
     border: 1px solid #fff;
 }
+.user__add-button:hover{
+    opacity: .8;
+}
 @media screen and (max-width: 713px) {
     .user__add-button{
         width: 282px

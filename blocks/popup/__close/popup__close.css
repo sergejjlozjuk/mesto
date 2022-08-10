@@ -7,3 +7,6 @@
     top: -334px;
     left: 233px;
 }
+.popup__close:hover{
+    opacity: .8;
+}
