@@ -8,8 +8,9 @@
     background-color: #000;
     border: none;
     padding: 0;
+    margin: 0;
     grid-area: user-name;
-    max-width: 294px;
+    max-width: 296px;
     padding-left: 14px;
     align-self: end;
 }

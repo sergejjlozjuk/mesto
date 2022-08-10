@@ -16,12 +16,23 @@
     <section class="user">
         <div class="user__profile">
             <img class="user__image" src="./images/user_image.jpg">
-            <input class="user__name" value="Жак-Ив-Кусто">
-            <input class="user__info" value="Исследователь океана">
+            <p class="user__name">Жак-Ив-Кусто</p>
+            <p class="user__info">Исследователь океана</p>
             <button class="user__change-button">
                 <img class="user__change-button_image" src="./images/pencil.svg">
             </button>
             <button class="user__add-button">+</button>
+        </div>
+        <div class="popup popup_active">
+            <form class="popup__container">
+                <p class="popup__title">Редактировать профиль</p>
+                <input class="popup__name" value="Жак-Ив-Кусто">
+                <input class="popup__info" value="Исследователь океана">
+                <button class="popup__submit">Сохранить</button>
+                <button class="popup__close">
+                    <img src="./images/Close Icon.svg">
+                </button>
+            </form>
         </div>
     </section>
     <section class="places">
