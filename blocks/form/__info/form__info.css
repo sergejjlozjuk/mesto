@@ -1,4 +1,4 @@
-.popup__form_info {
+.form__info {
     padding: 0 0 9px;
     max-width: 358px;
     width: 100%;
@@ -12,7 +12,7 @@
     line-height: 17px;
 }
 @media screen and (max-width: 550px) {
-    .popup__form_info{
+    .form__info{
         width: 238px;
         margin-bottom: 42px;
     }
