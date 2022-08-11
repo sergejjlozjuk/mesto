@@ -2,16 +2,13 @@
     grid-area: change-button;
     width: 24px;
     height: 24px;
-    background-color: none;
     border: 1px solid #fff;
     margin-top: 39px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(../../../images/pencil.svg);
+    background: url(../../../images/pencil.svg) center no-repeat;
     background-size: 10px;
-    background-repeat: no-repeat;
-    background-position: center;
     cursor: pointer;
 }
 .user__change-button:hover {
