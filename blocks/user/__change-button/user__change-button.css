@@ -2,7 +2,7 @@
     grid-area: change-button;
     width: 24px;
     height: 24px;
-    background-color: #000;
+    background-color: none;
     border: 1px solid #fff;
     margin-top: 39px;
     display: flex;
@@ -12,10 +12,10 @@
     background-size: 10px;
     background-repeat: no-repeat;
     background-position: center;
-
+    cursor: pointer;
 }
 .user__change-button:hover {
-    opacity: .8;
+    opacity: .6;
 }
 @media screen and (min-width: 320px) and (max-width: 713px) {
     .user__change-button{

@@ -1,18 +1,18 @@
-.popup__info {
-    padding: 0 0 9px;
+.popup__form_name{
+    padding: 0 0 7px;
     width: 358px;
-    margin: 0;
+    margin: 0 0 32px;
     border: none;
-    border-bottom: 1px solid #000;
-    font-family: 'Inter', sans-serif;
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+    font-family: 'Inter', 'Arial', sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
-    margin-bottom: 48px;
 }
+
 @media screen and (max-width: 550px) {
-    .popup__info{
+    .popup__form_name{
         width: 238px;
     }
 }
