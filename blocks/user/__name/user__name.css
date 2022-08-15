@@ -1,5 +1,5 @@
 .user__name {
-    font-family: 'Inter', 'Arial', sans-serif;
+    font-family: 'Inter-Medium';
     font-style: normal;
     font-weight: 500;
     font-size: 42px;
@@ -13,7 +13,6 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    letter-spacing: 2px;
 }
 @media screen and (min-width: 320px) and (max-width: 713px) {
     .user__name{

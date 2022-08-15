@@ -9,7 +9,7 @@
     color: #FFF;
     width: 358px;
     border: none;
-    margin: 0;
+    margin: 16px 0 0;
     padding: 0;
     height: 50px;
     border-radius: 2px;
@@ -23,5 +23,6 @@
         width: 238px;
         font-size: 14px;
         line-height: 17px;
+        margin-top: 11px;
     }
 }

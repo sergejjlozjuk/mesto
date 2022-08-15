@@ -8,10 +8,10 @@
        url("Inter-Regular.woff?v=3.19") format("woff");
 }
 @font-face {
-  font-family: 'Inter';
+  font-family: 'Inter-Medium';
   font-style: normal;
   font-weight: 500;
-  src: url("Inter-Medium.ttf") format("ttf");
+  src: url("Inter-Medium.woff2") format("woff2");
 }
 @font-face {
   font-family: 'Inter';
