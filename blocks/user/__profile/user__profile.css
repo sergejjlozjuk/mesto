@@ -1,6 +1,6 @@
 .user__profile {
     display: grid;
-    grid-template-columns: 120px 311px minmax(87px, 254px) 150px;
+    grid-template-columns: 120px 311px minmax(30px, 254px) 150px;
     grid-template-rows: 72px 34px auto;
     grid-template-areas: 
     "user-image user-name change-button add-button"
@@ -14,8 +14,8 @@
         "user-name change-button"
         "user-info ."
         "add-button .";
-        grid-template-columns: repeat(auto-fit, 226px);
+        grid-template-columns: repeat(auto-fit, 216px);
          grid-template-rows: repeat(auto-fit, 116px);
-         column-gap: 0;
+         column-gap: 10px;
     }
 }

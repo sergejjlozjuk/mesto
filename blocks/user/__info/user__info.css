@@ -16,6 +16,7 @@
     .user__info{
         font-size: 14px;
         line-height: 17px;
-        padding: 8px 0 0 43px;
+        text-align: center;
+        padding-left: 28px;
     }
 }

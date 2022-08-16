@@ -2,8 +2,8 @@ let changeButton = document.querySelector('.user__change-button');
 let popup = document.querySelector('.popup');
 let closeButton = document.querySelector('.popup__close');
 let form = document.querySelector('.form');
-let formName = document.querySelector('.form__input_name');
-let formInfo = document.querySelector('.form__input_info');
+let formName = document.querySelector('.form__input_type_name');
+let formInfo = document.querySelector('.form__input_type_info');
 let userName = document.querySelector('.user__name');
 let userInfo = document.querySelector('.user__info');
 
