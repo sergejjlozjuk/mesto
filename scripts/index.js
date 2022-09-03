@@ -119,9 +119,9 @@ function deleteCard (elem){
    }
 }
 cards.addEventListener('click', (evt) => openImage(evt.target));
-
+const popupMainImage = document.querySelector('.popup_type_open-image');
+popupMainImage.querySelector('.popup__close_type_card').addEventListener('click', () => closePopup(popupMainImage));
 function openImage (elem) {
-    let popupMainImage = document.querySelector('.popup_type_open-image');
    if (elem.classList.contains('place__image')) {
         openPopup(popupMainImage);
     } else {
@@ -129,6 +129,5 @@ function openImage (elem) {
     }
     popupMainImage.querySelector('.popup__main-image').src = elem.src;
     popupMainImage.querySelector('.popup__image-title').textContent = elem.parentElement.querySelector('.place__title').textContent;
-    popupMainImage.querySelector('.popup__close_type_card').addEventListener('click', () => closePopup(popupMainImage));
 }
 
