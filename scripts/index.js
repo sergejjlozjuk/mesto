@@ -1,11 +1,11 @@
-let changeButton = document.querySelector('.user__change-button');
-let popupUser = document.querySelector('.popup_type_user');
-let closeButton = document.querySelector('.popup__close');
-let form = document.querySelector('.form');
-let formName = document.querySelector('.form__input_type_name');
-let formInfo = document.querySelector('.form__input_type_info');
-let userName = document.querySelector('.user__name');
-let userInfo = document.querySelector('.user__info');
+const changeButton = document.querySelector('.user__change-button');
+const popupUser = document.querySelector('.popup_type_user');
+const closeButton = document.querySelector('.popup__close');
+const form = document.querySelector('.form');
+const formName = document.querySelector('.form__input_type_name');
+const formInfo = document.querySelector('.form__input_type_info');
+const userName = document.querySelector('.user__name');
+const userInfo = document.querySelector('.user__info');
 
 function openPopup (popup) {
     popup.classList.remove('popup_inactive');
@@ -62,11 +62,11 @@ const initialCards = [
   ];
 
 
-let cards = document.querySelector('.places');
-let popupAddCard = document.querySelector('.popup__type_card');
-let formCard = document.querySelector('.form__type_card');
-let addButton = document.querySelector('.user__add-button');
-let closeCardPopup = document.querySelector('.popup__close_type_card');
+const cards = document.querySelector('.places');
+const popupAddCard = document.querySelector('.popup__type_card');
+const formCard = document.querySelector('.form__type_card');
+const addButton = document.querySelector('.user__add-button');
+const closeCardPopup = document.querySelector('.popup__close_type_card');
 
 function clearInput () {
     popupAddCard.querySelector('.form__input_type_name').value = null;
