@@ -21,7 +21,7 @@
             <button class="user__add-button" type='button'></button>
         </div>
     </section>
-        <div class="popup">
+       <div class="popup popup_type_user">
             <div class="popup__container">
             <button class="popup__close" type='button'></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
@@ -32,8 +32,26 @@
                 </form>
             </div>
         </div>
+        <div class="popup popup__type_card">
+            <div class="popup__container">
+            <button class="popup__close popup__close_type_card" type='button'></button>
+                <h2 class="popup__title">Новое место</h2>
+                <form class="form form__type_card" name="user-form">
+                    <input class="form__input form__input_type_name" placeholder="Название" type="text">
+                    <input class="form__input form__input_type_info" placeholder="Ссылка на картинку" type="text">
+                    <button class="form__submit" type='submit'>Сохранить</button>
+                </form>
+            </div>
+        </div>
+        <div class="popup popup__type_open-image">
+            <div class="popup__container_type_open-image">
+            <button class="popup__close popup__close_type_card" type='button'></button>
+            <img class="popup__main-image">
+            <h2 class="popup__image-title"></h2>
+            </div>
+        </div>
     <section class="places">
-        <article class="place">
+        <!--<article class="place">
             <img class="place__image" src="./images/kirill-pershin-1088404-unsplash-1.png" alt="Карачаевск"/>
             <div class="place__info">
                 <h2 class="place__title">Карачаевск</h2>
@@ -74,7 +92,17 @@
                 <h2 class="place__title">Карачаево-Черкессия</h2>
                 <button class="place__like" type="button"></button>
             </div>
-        </article>
+        </article>-->
+        <template id="tmpl">
+            <article class="place">
+                <button class="place__trash"></button>
+                <img class="place__image"/>
+                <div class="place__info">
+                    <h2 class="place__title"></h2>
+                    <button class="place__like" type="button"></button>
+                </div>
+            </article>
+        </template>
     </section>
 </main>
 <footer class="footer">
