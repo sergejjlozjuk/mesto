@@ -63,8 +63,8 @@ const initialCards = [
 
 
 const cards = document.querySelector('.places');
-const popupAddCard = document.querySelector('.popup__type_card');
-const formCard = document.querySelector('.form__type_card');
+const popupAddCard = document.querySelector('.popup_type_card');
+const formCard = document.querySelector('.form_type_card');
 const addButton = document.querySelector('.user__add-button');
 const closeCardPopup = document.querySelector('.popup__close_type_card');
 
@@ -121,7 +121,7 @@ function deleteCard (elem){
 cards.addEventListener('click', (evt) => openImage(evt.target));
 
 function openImage (elem) {
-    let popupMainImage = document.querySelector('.popup__type_open-image');
+    let popupMainImage = document.querySelector('.popup_type_open-image');
    if (elem.classList.contains('place__image')) {
         openPopup(popupMainImage);
     } else {
