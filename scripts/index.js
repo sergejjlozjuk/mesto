@@ -1,6 +1,6 @@
-const buttonchange = document.querySelector('.user__change-button');
+const buttonEditProfile = document.querySelector('.user__change-button');
 const buttonAdd = document.querySelector('.user__add-button');
-const buttonClose = document.querySelector('.popup__close');
+const buttonCloseEditProfile = document.querySelector('.popup__close_edit-profile');
 const buttonCloseCardPopup = document.querySelector('.popup__close_type_card');
 const popupUser = document.querySelector('.popup_type_user');
 const popupAddCard = document.querySelector('.popup_type_card');
@@ -78,11 +78,11 @@ function openImage (card) {
     popupMainImage.querySelector('.popup__main-image').src = card.src;
     popupMainImage.querySelector('.popup__image-title').textContent = card.alt;
 }
-buttonchange.addEventListener('click', function () {
+buttonEditProfile.addEventListener('click', function () {
     changeName();
     openPopup(popupUser);
 });
-buttonClose.addEventListener('click', () => closePopup(popupUser));
+buttonCloseEditProfile.addEventListener('click', () => closePopup(popupUser));
 buttonCloseCardPopup.addEventListener('click', function() {
     closePopup(popupAddCard);
     clearInput();
