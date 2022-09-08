@@ -32,5 +32,9 @@
 @import url(../blocks/popup/_type/popup_type_card.css);
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__input/form__input.css);
+@import url(../blocks/form/__input/_type/form__input_type_error.css);
 @import url(../blocks/form/__submit/form__submit.css);
+@import url(../blocks/form/__submit/_inactive/form__submit_inactive.css);
+@import url(../blocks/form/__error/form__error.css);
+@import url(../blocks/form/__error/_visibility/form__error_visible.css);
 @import url(../blocks/popup/__close/popup__close.css);

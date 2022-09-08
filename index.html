@@ -25,9 +25,11 @@
             <div class="popup__container">
             <button class="popup__close popup__close_edit-profile" type='button'></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <form class="form form_user" name="user-form">
-                    <input class="form__input form__input_type_name" name="user-name" type="text">
-                    <input class="form__input form__input_type_info" name="user-info" type="text">
+                <form class="form form_user" name="user-form" novalidate>
+                    <input id="_type_name" class="form__input form__input_type_name" name="user-name" type="text" minlength="2" maxlength="40" required>
+                    <span class="form__error form__error_type_name"></span>
+                    <input id="_type_info" class="form__input form__input_type_info" name="user-info" type="text" minlength="2" maxlength="200" required>
+                    <span class="form__error form__error_type_info"></span>
                     <button class="form__submit" type='submit'>Сохранить</button>
                 </form>
             </div>
@@ -36,9 +38,11 @@
             <div class="popup__container">
             <button class="popup__close popup__close_type_card" type='button'></button>
                 <h2 class="popup__title">Новое место</h2>
-                <form class="form form_type_card" name="user-form">
-                    <input class="form__input form__input_type_name" placeholder="Название" type="text">
-                    <input class="form__input form__input_type_info" placeholder="Ссылка на картинку" type="text">
+                <form class="form form_type_card" name="card-form" novalidate>
+                    <input id="_type_title" class="form__input form__input_type_name" placeholder="Название" type="text" minlength="2" maxlength="30" required>
+                    <span class="form__error form__error_type_title"></span>
+                    <input id="_type_link" class="form__input form__input_type_info" placeholder="Ссылка на картинку" type="url" required>
+                    <span class="form__error form__error_type_link"></span>
                     <button class="form__submit" type='submit'>Сохранить</button>
                 </form>
             </div>
@@ -66,6 +70,7 @@
 <footer class="footer">
     <p class="footer__title">&copy; 2020 Mesto Russia</p>
 </footer>
+<script src="./scripts/validation.js"></script>
 <script src="./scripts/cards.js"></script>
 <script src="./scripts/index.js"></script>
 </body>
