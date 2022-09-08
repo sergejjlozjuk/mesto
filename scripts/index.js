@@ -13,9 +13,24 @@ const userName = document.querySelector('.user__name');
 const userInfo = document.querySelector('.user__info');
 const cards = document.querySelector('.places');
 
+
+function handlerCloseEscape (evt, popup) {
+    if (evt.key === 'Escape'){
+        closePopup(popup)
+        document.removeEventListener('keydown', handlerCloseEscape)
+    }
+}
+function setEventListener (popup) {
+    document.addEventListener('keydown', (evt) => handlerCloseEscape(evt, popup))
+    popup.addEventListener('click', (evt) => {
+        if (evt.target === popupUser || evt.target === popupAddCard || evt.target === popupMainImage)
+        closePopup(popup);
+    })
+}
 function openPopup (popup) {
     popup.classList.remove('popup_inactive');
     popup.classList.add('popup_active');
+    setEventListener(popup);
 }
 function changeName () {
  formName.value = userName.textContent;
@@ -47,7 +62,6 @@ function renderCards (card) {
     } else {
         cards.prepend(card);
     } 
-
 }
 function createCard () {
     const sampleCard = document.querySelector('#tmpl').content;

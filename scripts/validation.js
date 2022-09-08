@@ -1,12 +1,5 @@
 
-enableValidation({
-    formSelector: '.form',
-    inputSelector: '.form__input',
-    submitButtonSelector: '.form__submit',
-    inactiveButtonClass: 'form__submit_inactive',
-    inputErrorClass: 'form__input_type_error',
-    errorClass: 'form__error'
-  });
+
  function enableValidation (obj) {
     const formElements = Array.from(document.querySelectorAll(`${obj.formSelector}`));
     formElements.forEach((form) => setEventListeners(form, obj))
@@ -21,9 +14,11 @@ enableValidation({
  }
  function toggleButtonSubmit (inputList, buttonSubmit) {
     if (hasInvalidInput(inputList)) {
-        buttonSubmit.classList.add('form__submit_inactive')
+        buttonSubmit.classList.add('form__submit_inactive');
+        buttonSubmit.disabled = true;
     } else {
         buttonSubmit.classList.remove('form__submit_inactive')
+        buttonSubmit.disabled = false;
     }
  }
  function hasInvalidInput (inputList) {
@@ -50,3 +45,11 @@ enableValidation({
     errorElement.classList.remove('form__error_visible');
     input.classList.remove('form__input_type_error');
  }
+enableValidation({
+    formSelector: '.form',
+    inputSelector: '.form__input',
+    submitButtonSelector: '.form__submit',
+    inactiveButtonClass: 'form__submit_inactive',
+    inputErrorClass: 'form__input_type_error',
+    errorClass: 'form__error'
+  });
