@@ -1,23 +1,29 @@
 
-
- function enableValidation (obj) {
-    const formElements = Array.from(document.querySelectorAll(`${obj.formSelector}`));
-    formElements.forEach((form) => setEventListeners(form, obj))
+ function enableValidation ({formSelector, ...obj}) {
+    const formElements = Array.from(document.querySelectorAll(`${formSelector}`));
+    formElements.forEach((form) => setEventListeners(form, obj));
  }
- function setEventListeners (form, obj) {
-    const inputList = Array.from(form.querySelectorAll(`${obj.inputSelector}`));
-    const buttonSubmit = form.querySelector('.form__submit');
+ function setEventListeners (form, { inputSelector, submitButtonSelector, ...obj}) {
+    const inputList = Array.from(form.querySelectorAll(`${inputSelector}`));
+    const buttonSubmit = form.querySelector(`${submitButtonSelector}`);
     inputList.forEach(input => input.addEventListener('input', () =>{
         isValid(form, input);
-        toggleButtonSubmit(inputList, buttonSubmit);
+        toggleButtonSubmit(inputList, buttonSubmit ,obj);
     }));
  }
- function toggleButtonSubmit (inputList, buttonSubmit) {
+ function disabledButton (popup) {
+   const buttonSubmit = popup.querySelector('.form__submit');
+   if (buttonSubmit !== null) {
+         buttonSubmit.classList.add('form__submit_inactive');
+   buttonSubmit.disabled = true;
+   }
+ }
+ function toggleButtonSubmit (inputList, buttonSubmit, {inactiveButtonClass, ...obj}) {
     if (hasInvalidInput(inputList)) {
-        buttonSubmit.classList.add('form__submit_inactive');
+        buttonSubmit.classList.add(`${inactiveButtonClass}`);
         buttonSubmit.disabled = true;
     } else {
-        buttonSubmit.classList.remove('form__submit_inactive')
+        buttonSubmit.classList.remove(`${inactiveButtonClass}`)
         buttonSubmit.disabled = false;
     }
  }
