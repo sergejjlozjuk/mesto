@@ -33,7 +33,7 @@ function setEventListener () {
 }
 function openPopup (popup) {
     document.addEventListener('keydown', handlerCloseEscape);
-    disabledButton(popup);
+    // disabledButton(popup);
     popup.classList.remove('popup_inactive');
     popup.classList.add('popup_active');
 }

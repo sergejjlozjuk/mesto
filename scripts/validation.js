@@ -6,15 +6,16 @@
  function setEventListeners (form, { inputSelector, submitButtonSelector, ...obj}) {
     const inputList = Array.from(form.querySelectorAll(`${inputSelector}`));
     const buttonSubmit = form.querySelector(`${submitButtonSelector}`);
+    disabledButton(form, {submitButtonSelector, ...obj})
     inputList.forEach(input => input.addEventListener('input', () =>{
         isValid(form, input);
         toggleButtonSubmit(inputList, buttonSubmit ,obj);
     }));
  }
- function disabledButton (popup) {
-   const buttonSubmit = popup.querySelector('.form__submit');
+ function disabledButton (popup, {submitButtonSelector, inactiveButtonClass, ...obj}) {
+   const buttonSubmit = popup.querySelector(`${submitButtonSelector}`);
    if (buttonSubmit !== null) {
-         buttonSubmit.classList.add('form__submit_inactive');
+         buttonSubmit.classList.add(`${inactiveButtonClass}`);
    buttonSubmit.disabled = true;
    }
  }
