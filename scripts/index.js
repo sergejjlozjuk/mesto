@@ -14,8 +14,8 @@ const cardInfo = popupAddCard.querySelector('.form__input_type_info');
 const userName = document.querySelector('.user__name');
 const userInfo = document.querySelector('.user__info');
 const cards = document.querySelector('.places');
-const openedImage =  popupMainImage.querySelector('.popup__main-image');
-const openedImageTitle = popupMainImage.querySelector('.popup__image-title');
+const openedImage = document.querySelector('.popup__main-image');
+const openedImageTitle = document.querySelector('.popup__image-title');
 
 
 function handlerCloseEscape (evt) {
@@ -57,41 +57,22 @@ function saveChanges (evt) {
 function renderCards (card) {
     if (card === undefined){
             initialCards.forEach((place) => {
-            const card = createCard(place);
-            cards.prepend(card);
+            const card = new Card;
+            card.CreateCard(place);
+            cards.prepend(card.card);
         });
     } else {
         cards.prepend(card);
     } 
-}
-function createCard (place) {
-    const sampleCard = document.querySelector('#tmpl').content;
-    const card = sampleCard.querySelector('.place').cloneNode(true);
-    const cardImage = card.querySelector('.place__image');
-    card.querySelector('.place__trash').addEventListener('click', () => deleteCard(card));
-    card.querySelector('.place__like').addEventListener('click', () => handlerLikeClick(card));
-    card.querySelector('.place__image').addEventListener('click', e =>  openImage(e.target));
-    card.querySelector('.place__title').textContent = cardName.value;
-    card.querySelector('.place__image').src = cardInfo.value;
-    card.querySelector('.place__image').alt = cardName.value;
-    if (place !== undefined) {
-    card.querySelector('.place__title').textContent = place.name;
-    cardImage.src = place.link;
-    cardImage.alt = place.name;
-    return card
-    }
-    return card
-}
-function deleteCard (card) {
-    card.remove();
 }
 function handlerLikeClick (card) {
     card.querySelector('.place__like').classList.toggle('place__like_active');
 }
 function saveCard (evt) {
     evt.preventDefault();
-    const card = createCard();
-    renderCards(card);
+    const card = new Card;
+    card.CreateCard();
+    renderCards(card.card);
     closePopup();
     formCard.reset()
 }
