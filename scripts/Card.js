@@ -1,4 +1,5 @@
- class Card {
+ import { openImage } from "./index.js";
+ export class Card {
     
     constructor () {
         this.sampleCard = document.querySelector('#tmpl').content;
@@ -24,6 +25,10 @@
         this.card.querySelector('.place__like').classList.toggle('place__like_active');
     }
      _deleteCard (card) {
-        this.card.remove();
+        card.remove();
     }
 }
+
+const popupAddCard = document.querySelector('.popup_type_card');
+const cardName = popupAddCard.querySelector('.form__input_type_name');
+const cardInfo = popupAddCard.querySelector('.form__input_type_info');
