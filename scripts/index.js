@@ -1,4 +1,5 @@
-import { FormValidator } from "./validation.js";
+import { initialCards } from "./cards.js";
+import { FormValidator } from "./FormValidator.js";
 import { Card } from "./Card.js";
 const buttonEditProfile = document.querySelector('.user__change-button');
 const buttonAdd = document.querySelector('.user__add-button');
@@ -16,7 +17,10 @@ const userInfo = document.querySelector('.user__info');
 const cards = document.querySelector('.places');
 const openedImage = document.querySelector('.popup__main-image');
 const openedImageTitle = document.querySelector('.popup__image-title');
-const selectors = {
+const cardName = popupAddCard.querySelector('.form__input_type_name');
+const cardInfo = popupAddCard.querySelector('.form__input_type_info');
+const sampleCard = document.querySelector('#tmpl');
+const validationObject = {
     formSelector: '.form',
     inputSelector: '.form__input',
     submitButtonSelector: '.form__submit',
@@ -28,84 +32,78 @@ const selectors = {
 
 function handlerCloseEscape (evt) {
     if (evt.key === 'Escape'){
-        closePopup();
+        const popup = document.querySelector('.popup_active');
+        closePopup(popup);
     }
 }
-function setEventListener () {
-    const popupList = Array.from(document.querySelectorAll('.popup'));
+function setCloseEventListener () {
+    const popupList = document.querySelectorAll('.popup');
     popupList.forEach(popup => popup.addEventListener('click', (evt) => {
-        if (evt.target === popupAddCard || evt.target === popupUser || evt.target === popupMainImage) {
-            closePopup()
+        if (evt.target.classList.contains('popup')) {
+            closePopup(evt.target)
         }
     }));
 }
 function openPopup (popup) {
     document.addEventListener('keydown', handlerCloseEscape);
-    popup.classList.remove('popup_inactive');
     popup.classList.add('popup_active');
 }
 function changeName () {
  formName.value = userName.textContent;
  formInfo.value = userInfo.textContent;
 }
-function closePopup () {
-    const popup = document.querySelector('.popup_active');
-    popup.classList.add('popup_inactive');
-    setTimeout(() => popup.classList.remove('popup_active'), 950) ;
+function closePopup (popup) {
+    popup.classList.remove('popup_active')
     document.removeEventListener('keydown', handlerCloseEscape);
 }
-function saveChanges (evt) {
+function saveChangesUserProfile (evt) {
     evt.preventDefault();
     userName.textContent = formName.value;
     userInfo.textContent = formInfo.value;
-    closePopup();
+    closePopup(evt.target.closest('.popup'));
+}
+function renderInitialCards () {
+    initialCards.forEach((place) => {
+    const card = new Card(sampleCard, place.name, place.link, handleOpenPopup);
+    card.createCard()
+    cards.prepend(card._card);
+})}
+function renderCard (card) {
+    cards.prepend(card);
 }
 
-function renderCards (card) {
-    if (card === undefined){
-            initialCards.forEach((place) => {
-            const card = new Card;
-            card.CreateCard(place);
-            cards.prepend(card.card);
-        });
-    } else {
-        cards.prepend(card);
-    } 
-}
 function saveCard (evt) {
     evt.preventDefault();
-    const card = new Card;
-    card.CreateCard();
-    renderCards(card.card);
-    closePopup();
+    const card = new Card(sampleCard, cardName.value, cardInfo.value, handleOpenPopup);
+    renderCard(card.createCard());
+    closePopup(evt.target.closest('.popup'));
     formCard.reset()
 }
-function openImage (card) {
-    openedImage.src = card.src;
-    openedImage.alt = card.alt
-    openedImageTitle.textContent = card.alt;
-    openPopup(popupMainImage);
+function handleOpenPopup(name, link) {
+openedImage.src = link;
+openedImage.alt = name;
+openedImageTitle.textContent = name;
+openPopup(popupMainImage)
 }
 buttonEditProfile.addEventListener('click', function () {
-    const validation = new FormValidator(popupUser, selectors);
-    validation.enableValidation();
     changeName();
     openPopup(popupUser);
 });
-buttonCloseEditProfile.addEventListener('click', () => closePopup());
-buttonCloseCardPopup.addEventListener('click', function() {
-    closePopup();
+buttonCloseEditProfile.addEventListener('click', (e) => closePopup(e.target.closest('.popup')));
+buttonCloseCardPopup.addEventListener('click', function(e) {
+    closePopup(e.target.closest('.popup'));
     formCard.reset()
 });
 buttonAdd.addEventListener('click', () => {
-    const validation = new FormValidator(popupAddCard, selectors);
-    validation.enableValidation();
     openPopup(popupAddCard);
 });
-formUser.addEventListener('submit', saveChanges);
+formUser.addEventListener('submit', saveChangesUserProfile);
 formCard.addEventListener('submit', saveCard);
-popupMainImage.querySelector('.popup__close_type_card').addEventListener('click', () => closePopup());
-setEventListener();
-renderCards();
+popupMainImage.querySelector('.popup__close_type_card').addEventListener('click', (e) => closePopup(e.target.closest('.popup')));
+const validationUser = new FormValidator(popupUser, validationObject);
+validationUser.enableValidation();
+const validationCard = new FormValidator(popupAddCard, validationObject);
+validationCard.enableValidation();
+setCloseEventListener();
+renderInitialCards();
 
-  export{ openImage }

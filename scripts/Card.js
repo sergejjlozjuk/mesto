@@ -1,34 +1,27 @@
- import { openImage } from "./index.js";
  export class Card {
     
-    constructor () {
-        this.sampleCard = document.querySelector('#tmpl').content;
-        this.card = this.sampleCard.querySelector('.place').cloneNode(true);
-        this.cardImage = this.card.querySelector('.place__image');
+    constructor (sampleCard, name, link, handleOpenPopup) {
+        this._handleOpenPopup = handleOpenPopup
+        this._card = sampleCard.content.querySelector('.place').cloneNode(true);
+        this._cardName = name;
+        this._cardInfo = link;
+        this._cardImage = this._card.querySelector('.place__image');
+        this._cardLike = this._card.querySelector('.place__like');
     }
-    CreateCard (place) {
-        this.card.querySelector('.place__trash').addEventListener('click', () => this._deleteCard(this.card));
-        this.card.querySelector('.place__like').addEventListener('click', () => this._handlerLikeClick());
-        this.card.querySelector('.place__image').addEventListener('click', e =>  openImage(e.target));
-        this.card.querySelector('.place__title').textContent = cardName.value;
-        this.card.querySelector('.place__image').src = cardInfo.value;
-        this.card.querySelector('.place__image').alt = cardName.value;
-        if (place !== undefined) {
-        this.card.querySelector('.place__title').textContent = place.name;
-        this.cardImage.src = place.link;
-        this.cardImage.alt = place.name;
-        return this.card
-        }
-        return this.card
+    createCard () {
+        this._card.querySelector('.place__trash').addEventListener('click', () => this._deleteCard(this._card));
+        this._cardLike.addEventListener('click', () => this._handlerLikeClick());
+        this._cardImage.addEventListener('click', e =>  this._handleOpenPopup(this._cardName, this._cardInfo));
+        this._card.querySelector('.place__title').textContent = this._cardName;
+        this._cardImage.src = this._cardInfo;
+        this._cardImage.alt = this._cardName;
+        this._card.querySelector('.place__title').textContent = this._cardName;
+        return this._card;
     }
      _handlerLikeClick () {
-        this.card.querySelector('.place__like').classList.toggle('place__like_active');
+        this._cardLike.classList.toggle('place__like_active');
     }
      _deleteCard (card) {
         card.remove();
     }
 }
-
-const popupAddCard = document.querySelector('.popup_type_card');
-const cardName = popupAddCard.querySelector('.form__input_type_name');
-const cardInfo = popupAddCard.querySelector('.form__input_type_info');
