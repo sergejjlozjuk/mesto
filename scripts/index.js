@@ -19,7 +19,7 @@ const openedImage = document.querySelector('.popup__main-image');
 const openedImageTitle = document.querySelector('.popup__image-title');
 const cardName = popupAddCard.querySelector('.form__input_type_name');
 const cardInfo = popupAddCard.querySelector('.form__input_type_info');
-const sampleCard = document.querySelector('#tmpl');
+const sampleCard = '#tmpl';
 const validationObject = {
     formSelector: '.form',
     inputSelector: '.form__input',
@@ -36,7 +36,7 @@ function handlerCloseEscape (evt) {
         closePopup(popup);
     }
 }
-function setCloseEventListener () {
+function setPopupsCloseEventListener () {
     const popupList = document.querySelectorAll('.popup');
     popupList.forEach(popup => popup.addEventListener('click', (evt) => {
         if (evt.target.classList.contains('popup')) {
@@ -56,7 +56,7 @@ function closePopup (popup) {
     popup.classList.remove('popup_active')
     document.removeEventListener('keydown', handlerCloseEscape);
 }
-function saveChangesUserProfile (evt) {
+function saveUserProfileChanges (evt) {
     evt.preventDefault();
     userName.textContent = formName.value;
     userInfo.textContent = formInfo.value;
@@ -65,8 +65,7 @@ function saveChangesUserProfile (evt) {
 function renderInitialCards () {
     initialCards.forEach((place) => {
     const card = new Card(sampleCard, place.name, place.link, handleOpenPopup);
-    card.createCard()
-    cards.prepend(card._card);
+    cards.prepend(card.createCard());
 })}
 function renderCard (card) {
     cards.prepend(card);
@@ -97,13 +96,13 @@ buttonCloseCardPopup.addEventListener('click', function(e) {
 buttonAdd.addEventListener('click', () => {
     openPopup(popupAddCard);
 });
-formUser.addEventListener('submit', saveChangesUserProfile);
+formUser.addEventListener('submit', saveUserProfileChanges);
 formCard.addEventListener('submit', saveCard);
 popupMainImage.querySelector('.popup__close_type_card').addEventListener('click', (e) => closePopup(e.target.closest('.popup')));
 const validationUser = new FormValidator(popupUser, validationObject);
 validationUser.enableValidation();
 const validationCard = new FormValidator(popupAddCard, validationObject);
 validationCard.enableValidation();
-setCloseEventListener();
+setPopupsCloseEventListener();
 renderInitialCards();
 
