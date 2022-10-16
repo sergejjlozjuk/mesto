@@ -6,10 +6,10 @@ export default class Section {
     }
     renderItem () {
         this._items.forEach((place) => {
-            this._addItem(this._renderer(place).createCard())
+            this.addItem(this._renderer(place).createCard())
         });
     }
-    _addItem (elem) {
+    addItem (elem) {
         this._container.append(elem)
     }
 }
