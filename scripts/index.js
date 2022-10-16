@@ -1,6 +1,11 @@
-import { initialCards } from "./cards.js";
-import { FormValidator } from "./FormValidator.js";
-import { Card } from "./Card.js";
+import { initialCards } from "./utils/cards.js";
+import { FormValidator } from "./components/FormValidator.js";
+import { Card } from "./components/Card.js";
+import Section from "./components/Section.js";
+// import Popup from "./components/Popup.js";
+// import PopupWithImage from "./components/PopupWithImage.js";
+// import PopupWithForm from "./components/PopupWithForm.js";
+// import UserInfo from "./components/UserInfo.js";
 const buttonEditProfile = document.querySelector('.user__change-button');
 const buttonAdd = document.querySelector('.user__add-button');
 const buttonCloseEditProfile = document.querySelector('.popup__close_edit-profile');
@@ -62,11 +67,6 @@ function saveUserProfileChanges (evt) {
     userInfo.textContent = formInfo.value;
     closePopup(evt.target.closest('.popup'));
 }
-function renderInitialCards () {
-    initialCards.forEach((place) => {
-    const card = new Card(sampleCard, place.name, place.link, handleOpenPopup);
-    cards.prepend(card.createCard());
-})}
 function renderCard (card) {
     cards.prepend(card);
 }
@@ -104,5 +104,12 @@ validationUser.enableValidation();
 const validationCard = new FormValidator(popupAddCard, validationObject);
 validationCard.enableValidation();
 setPopupsCloseEventListener();
-renderInitialCards();
 
+const cardList = new Section({
+    items: initialCards,
+     renderer: (place) => {
+        const card = new Card(sampleCard, place.name, place.link, handleOpenPopup);
+        return card
+     }
+    }, '.places');
+cardList.renderItem()
