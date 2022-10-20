@@ -1,7 +1,6 @@
-export class Popup {
+export default class Popup {
     constructor (selector) {
         this._popup = document.querySelector(selector);
-        this.selector = selector;
     }
     open () {
         document.addEventListener('keydown', this._handleEscClose.bind(this));

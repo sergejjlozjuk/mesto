@@ -2,9 +2,9 @@ import { initialCards } from "./utils/cards.js";
 import { FormValidator } from "./components/FormValidator.js";
 import { Card } from "./components/Card.js";
 import Section from "./components/Section.js";
-import { Popup } from "./components/Popup.js";
+import Popup from "./components/Popup.js";
 import PopupWithImage from "./components/PopupWithImage.js";
-// import PopupWithForm from "./components/PopupWithForm.js";
+import PopupWithForm from "./components/PopupWithForm.js";
 // import UserInfo from "./components/UserInfo.js";
 const buttonEditProfile = document.querySelector('.user__change-button');
 const buttonAdd = document.querySelector('.user__add-button');
@@ -12,7 +12,7 @@ const buttonAdd = document.querySelector('.user__add-button');
 const buttonCloseCardPopup = document.querySelector('.popup__close_type_card');
 const popupUser = document.querySelector('.popup_type_user');
 const popupAddCard = document.querySelector('.popup_type_card');
-const popupMainImage = document.querySelector('.popup_type_open-image');
+// const popupMainImage = document.querySelector('.popup_type_open-image');
 const formCard = document.querySelector('.form_type_card');
 const formUser = document.querySelector('.form_user');
 const formName = document.querySelector('.form__input_type_name');
@@ -20,8 +20,8 @@ const formInfo = document.querySelector('.form__input_type_info');
 const userName = document.querySelector('.user__name');
 const userInfo = document.querySelector('.user__info');
 const cardsSelctor = '.places';
-const openedImage = document.querySelector('.popup__main-image');
-const openedImageTitle = document.querySelector('.popup__image-title');
+// const openedImage = document.querySelector('.popup__main-image');
+// const openedImageTitle = document.querySelector('.popup__image-title');
 const cardName = popupAddCard.querySelector('.form__input_type_name');
 const cardInfo = popupAddCard.querySelector('.form__input_type_info');
 const sampleCard = '#tmpl';
@@ -34,25 +34,38 @@ const validationObject = {
     errorClass: '.form__error',
     errorClassVisible: 'form__error_visible'
   };
-  const foo = new Popup ('.popup_type_user');
-  foo.setEventListeners()
-  const boo = new PopupWithImage('.popup_type_open-image');
-  boo.setEventListeners()
-
+  const popupUser1 = new Popup ('.popup_type_user');
+  popupUser1.setEventListeners()
+  const popupImage = new PopupWithImage('.popup_type_open-image');
+  popupImage.setEventListeners()
+  const popupFormCard = new PopupWithForm('.popup_type_card', 
+  {handleInputValues: (formValues) => {
+    const sectionCard = new Section ({items: initialCards,
+        renderer: () => {
+            const card = new Card(sampleCard, formValues.name, formValues.link, handleOpenPopup);
+            return card
+        }
+    },
+    cardsSelctor)
+    sectionCard.addItem(sectionCard._renderer().createCard())
+  }}
+  );
+  popupFormCard.setEventListeners()
+// console.log(goo._getInputValues())
 // function handlerCloseEscape (evt) {
 //     if (evt.key === 'Escape'){
 //         const popup = document.querySelector('.popup_active');
 //         closePopup(popup);
 //     }
 // }
-function setPopupsCloseEventListener () {
-    const popupList = document.querySelectorAll('.popup');
-    popupList.forEach(popup => popup.addEventListener('click', (evt) => {
-        if (evt.target.classList.contains('popup')) {
-            closePopup(evt.target)
-        }
-    }));
-}
+// function setPopupsCloseEventListener () {
+//     const popupList = document.querySelectorAll('.popup');
+//     popupList.forEach(popup => popup.addEventListener('click', (evt) => {
+//         if (evt.target.classList.contains('popup')) {
+//             closePopup(evt.target)
+//         }
+//     }));
+// }
 // function openPopup (popup) {
 //     document.addEventListener('keydown', handlerCloseEscape);
 //     popup.classList.add('popup_active');
@@ -73,21 +86,22 @@ function saveUserProfileChanges (evt) {
     closePopup(popupUser)
 }
 
-function saveCard (evt) {
-    evt.preventDefault();
-    const sectionCard = new Section ({items: initialCards,
-        renderer: () => {
-            const card = new Card(sampleCard, cardName.value, cardInfo.value, handleOpenPopup);
-            return card
-        }
-    },
-    cardsSelctor)
-    sectionCard.addItem(sectionCard._renderer().createCard())
-    closePopup(evt.target.closest('.popup'));
-    formCard.reset()
-}
+// function saveCard (evt) {
+//     evt.preventDefault();
+//     const sectionCard = new Section ({items: initialCards,
+//         renderer: () => {
+//             const card = new Card(sampleCard, cardName.value, cardInfo.value, handleOpenPopup);
+//             return card
+//         }
+//     },
+//     cardsSelctor)
+//     sectionCard.addItem(sectionCard._renderer().createCard())
+//     closePopup(evt.target.closest('.popup'));
+//     formCard.reset()
+// }
 function handleOpenPopup(name, link) {
-    boo.open(name, link)
+    boo.open(name, link),
+    getInputValues(name, link)
 }
 buttonEditProfile.addEventListener('click', function () {
     changeName();
@@ -95,15 +109,15 @@ buttonEditProfile.addEventListener('click', function () {
     foo.open()
 });
 // buttonCloseEditProfile.addEventListener('click', (e) => closePopup(e.target.closest('.popup')));
-buttonCloseCardPopup.addEventListener('click', function(e) {
-    closePopup(e.target.closest('.popup'));
+buttonCloseCardPopup.addEventListener('click', function() {
+    goo.close()
     formCard.reset()
 });
 buttonAdd.addEventListener('click', () => {
-    openPopup(popupAddCard);
+    goo.open()
 });
 formUser.addEventListener('submit', saveUserProfileChanges);
-formCard.addEventListener('submit', saveCard);
+// formCard.addEventListener('submit', saveCard);
 // popupMainImage.querySelector('.popup__close_type_card').addEventListener('click', boo.close.bind(this));
 const validationUser = new FormValidator(popupUser, validationObject);
 validationUser.enableValidation();
@@ -119,3 +133,4 @@ const cardList = new Section({
      }
     }, cardsSelctor);
 cardList.renderItem()
+
