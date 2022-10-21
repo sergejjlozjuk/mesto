@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="./pages/index.css" rel="stylesheet">
     <title>Место Россия</title>
 </head>
 <body class="root">
 <header class="header">
-    <img class="header__logo" src="./images/header_logo.svg" alt="Россия">
+    <img class="header__logo" src="<%=require('./images/header_logo.svg')%>" alt="Россия">
 </header>
 <main class="main">
     <section class="user">
         <div class="user__profile">
-            <img class="user__image" src="./images/user_image.jpg" alt="Жак-Ив-Кусто">
+            <img class="user__image" src="<%=require('./images/user_image.jpg')%>" alt="Жак-Ив-Кусто">
             <h1 class="user__name">Жак-Ив Кусто</h1>
             <p class="user__info">Исследователь океана</p>
             <button class="user__change-button" type='button'></button>
@@ -29,9 +28,9 @@
             <button class="popup__close popup__close_edit-profile" type='button'></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
                 <form class="form form_user" name="user-form" novalidate>
-                    <input id="_type_name" class="form__input form__input_type_name" name="user-name" type="text" minlength="2" maxlength="40" required>
+                    <input id="_type_name" class="form__input form__input_type_name" name="name" type="text" minlength="2" maxlength="40" required>
                     <span class="form__error form__error_type_name"></span>
-                    <input id="_type_info" class="form__input form__input_type_info" name="user-info" type="text" minlength="2" maxlength="200" required>
+                    <input id="_type_info" class="form__input form__input_type_info" name="info" type="text" minlength="2" maxlength="200" required>
                     <span class="form__error form__error_type_info"></span>
                     <button class="form__submit" type='submit'>Сохранить</button>
                 </form>
@@ -70,6 +69,5 @@
 <footer class="footer">
     <p class="footer__title">&copy; 2020 Mesto Russia</p>
 </footer>
-<script src="./scripts/index.js" type="module"></script>
 </body>
 </html>
