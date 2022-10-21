@@ -1,14 +1,13 @@
-// import '../pages/index.css';
 
-import '../pages/index.css'; 
-import { initialCards } from "./utils/cards.js";
-import { FormValidator } from "./components/FormValidator.js";
-import { Card } from "./components/Card.js";
-import Section from "./components/Section.js";
-import Popup from "./components/Popup.js";
-import PopupWithImage from "./components/PopupWithImage.js";
-import PopupWithForm from "./components/PopupWithForm.js";
-import UserInfo from "./components/UserInfo.js";
+import './index.css'; 
+import { initialCards } from "../scripts/utils/cards.js";
+import { FormValidator } from "../scripts/components/FormValidator.js";
+import { Card } from "../scripts/components/Card.js";
+import Section from "../scripts/components/Section.js";
+import Popup from "../scripts/components/Popup.js";
+import PopupWithImage from "../scripts/components/PopupWithImage.js";
+import PopupWithForm from "../scripts/components/PopupWithForm.js";
+import UserInfo from "../scripts/components/UserInfo.js";
 const buttonEditProfile = document.querySelector('.user__change-button');
 const buttonAdd = document.querySelector('.user__add-button');
 const buttonCloseCardPopup = document.querySelector('.popup__close_type_card');
@@ -32,14 +31,8 @@ const validationObject = {
   popupImage.setEventListeners()
   const popupFormCard = new PopupWithForm('.popup_type_card', 
   {handleInputValues: (formValues) => {
-    const sectionCard = new Section ({items: initialCards,
-        renderer: () => {
-            const card = new Card(sampleCard, formValues.name, formValues.link, handleOpenPopup);
-            return card
-        }
-    },
-    cardsSelctor)
-    sectionCard.addItem(sectionCard._renderer().createCard())
+    const card = new Card(sampleCard, formValues.name, formValues.link, handleOpenPopup)
+    cardList.addItem(card.createCard())
   }}
   );
   popupFormCard.setEventListeners()
