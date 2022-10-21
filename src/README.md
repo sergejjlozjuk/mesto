@@ -24,5 +24,6 @@
 * работа с DOM
 * Классы
 * Модули
+* ООП
 
 * [Ссылка](https://sergejjlozjuk.github.io/mesto/?)  
