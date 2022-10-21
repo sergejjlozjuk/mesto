@@ -38,7 +38,7 @@ module.exports = {
         generator: {
           filename: 'fonts/[name].[hash][ext]'
         }
-      }
+      },
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, {

@@ -9,6 +9,7 @@
     this._setEventListeners()
  }
   _setEventListeners () {
+    this._formElement.addEventListener('submit', this._disabledButton.bind(this))
     this._disabledButton()
     this._inputList.forEach(input => input.addEventListener('input', () =>{
         this._toggleInputErrorState(input);

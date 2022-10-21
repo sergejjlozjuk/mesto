@@ -3,4 +3,9 @@
     border: 1px solid black;
     color: black;
     opacity: .2;
+} 
+.form__submit_inactive:disabled{
+    cursor: default;
+    opacity: .2;
+
 }
