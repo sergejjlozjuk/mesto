@@ -1,7 +1,10 @@
 export default class Popup {
-    constructor (selector) {
+    constructor (selector, confirmedDelete) {
         this._popup = document.querySelector(selector);
         this._handleEscClose = this._handleEscClose.bind(this);
+        this._buttonConfirmDelete = this._popup.querySelector('.popup__button-confirm');
+        this.confirmedDelete = confirmedDelete
+        this.card
     }
     open () {
         document.addEventListener('keydown', this._handleEscClose);
@@ -17,6 +20,12 @@ export default class Popup {
     }
     }
     setEventListeners () {
+        if(this._buttonConfirmDelete) {
+            this._buttonConfirmDelete.addEventListener('click', () => {
+                this.confirmedDelete(this.card)
+                this.close()
+            })
+        }
         this._popup.addEventListener('click', (evt) => {
             if (evt.target.classList.contains('popup')) {
                 this.close()

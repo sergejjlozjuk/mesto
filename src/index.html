@@ -13,9 +13,10 @@
 <main class="main">
     <section class="user">
         <div class="user__profile">
-            <img class="user__image" src="<%=require('./images/user_image.jpg')%>" alt="Жак-Ив-Кусто">
-            <h1 class="user__name">Жак-Ив Кусто</h1>
-            <p class="user__info">Исследователь океана</p>
+            <img class="user__image" alt="Аватар">
+            <div class="user__image-overlay"></div>
+            <h1 class="user__name"></h1>
+            <p class="user__info"></p>
             <button class="user__change-button" type='button'></button>
             <button class="user__add-button" type='button'></button>
         </div>
@@ -56,13 +57,34 @@
             <h2 class="popup__image-title"></h2>
             </div>
         </div>
+        <div class="popup popup_type_confirm-delete">
+            <div class="popup__container">
+                <button class="popup__close" type="button"></button>
+                <h2 class="popup__title">Вы уверены?</h2>
+                <button class="popup__button-confirm" type='button'>Да</button>
+            </div>
+        </div>
+        <div class="popup popup_type_edit-avatar">
+            <div class="popup__container">
+                <button class="popup__close" type="button"></button>
+                <h2 class="popup__title">Обновить аватар</h2>
+                <form class="form">
+                    <input class="form__input" id="_type_link" name="link" type="url" required placeholder="Ссылка на картинку">
+                    <span class="form__error form__error_type_link"></span>
+                    <button class="form__submit" type='submit'>Сохранить</button>
+                </form>
+            </div>
+        </div>
         <template id="tmpl">
             <article class="place">
                 <button class="place__trash"></button>
                 <img class="place__image"/>
                 <div class="place__info">
                     <h2 class="place__title"></h2>
+                    <div class="place__like-container">
                     <button class="place__like" type="button"></button>
+                    <span class="place__like-counter"></span>
+                    </div>
                 </div>
             </article>
         </template>
