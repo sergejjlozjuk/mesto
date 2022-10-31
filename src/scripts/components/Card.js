@@ -1,4 +1,4 @@
- export class Card {
+ export default class Card {
     
     constructor (place, userId, sampleCard, handleOpenPopup, confrimDelete, handlerLikeClick) {
         this._handleOpenPopup = handleOpenPopup
@@ -22,7 +22,7 @@
         this._card.querySelector('.place__trash').addEventListener('click', () => {
             this.confrimDelete(this)
         });
-        this._cardLike.addEventListener('click', () => this.handlerLikeClick());
+        this._cardLike.addEventListener('click', () => this.handlerLikeClick(this));
         if (this._likes) {
             this._likes.forEach(user => {
                 if(user._id === this.userId) {
@@ -37,36 +37,7 @@
         this._cardImage.alt = this._cardName;
         return this._card;
     }
-    // handlerLikeClick () {
-    //     this._cardLike.classList.toggle('place__like_active');
-    //     if(this._cardLike.classList.contains('place__like_active')) {
-    //         fetch(`https://mesto.nomoreparties.co/v1/cohort-52/cards/${this._cardId}/likes`, {
-    //             method: 'PUT',
-    //             headers: {
-    //                 authorization: 'dfaf14aa-f273-4bf7-9d80-4b98802a6803'
-    //             }
-    //         })
-    //         .then(res => res.json())
-    //         .then(res => {
-    //             this._cardLikeCounter.textContent = res.likes.length
-    //         })
-    //         .catch(err => console.log(err))
-    //     } else {
-    //         fetch(`https://mesto.nomoreparties.co/v1/cohort-52/cards/${this._cardId}/likes`, {
-    //             method: 'DELETE',
-    //             headers: {
-    //                 authorization: 'dfaf14aa-f273-4bf7-9d80-4b98802a6803'
-    //             }
-    //         })
-    //         .then(res => res.json())
-    //         .then(res => {
-    //             this._cardLikeCounter.textContent = res.likes.length
-    //         })
-    //         .catch(err => console.log(err))
-    //     }
-    // }
      deleteCard () {
         this._card.remove();
-        this._card = null;
     }
 }
