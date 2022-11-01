@@ -4,20 +4,19 @@ export default class PopupWithForm extends Popup {
         super(selector)
         this._handleInputValues = handleInputValues;
         this._form = this._popup.querySelector('.form');
-        this._submitButton = this._form.querySelector('.form__submit')
+        this._submitButton = this._form.querySelector('.form__submit');
+        this._inputList = this._form.querySelectorAll('.form__input');
     }
     setInputValues (data) {
-        this._userNameForm = this._form.querySelector('.form__input_type_name');
-        this._userInfoForm = this._form.querySelector('.form__input_type_info');
-        this._userNameForm.value = data.name;
-        this._userInfoForm.value = data.info;
+        this._inputList.forEach(input => {
+            input.value = data[input.name]
+        })
     }
     _disabledButton () {
         this._submitButton.classList.add('form__submit_inactive');
         this._submitButton.disabled = true;
       }
     _getInputValues () {
-        this._inputList = this._form.querySelectorAll('.form__input');
         this._formValues = {};
         this._inputList.forEach(input => {
             this._formValues[input.name] = input.value
@@ -27,9 +26,10 @@ export default class PopupWithForm extends Popup {
     setSubmitButtonName (Loading) {
         if (Loading) {
             this._disabledButton()
+            this._submitButtonDefaultText = this._submitButton.textContent;
             this._submitButton.textContent = 'Сохранение...'
         } else {
-            this._submitButton.textContent = 'Сохранить'
+            this._submitButton.textContent = this._submitButtonDefaultText
         }
     }
     setEventListeners () {

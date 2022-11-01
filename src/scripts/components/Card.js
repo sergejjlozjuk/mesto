@@ -37,6 +37,12 @@
         this._cardImage.alt = this._cardName;
         return this._card;
     }
+    setCardCounter (value) {
+        this._cardLikeCounter.textContent = value
+    }
+    toggleCardLike () {
+        this._cardLike.classList.toggle('place__like_active');
+    }
      deleteCard () {
         this._card.remove();
     }

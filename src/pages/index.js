@@ -23,7 +23,6 @@ const validationObject = {
     errorClass: '.form__error',
     errorClassVisible: 'form__error_visible'
   };
-let cardList
 
 const api = new Api({
     baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-52',
@@ -121,15 +120,15 @@ function handlerLikeClick (card) {
     if(card._cardLike.classList.contains('place__like_active')) {
         api.deleteCardLike(card)
         .then(res => {
-            this._cardLikeCounter.textContent = res.likes.length;
-            card._cardLike.classList.remove('place__like_active');
+            card.setCardCounter(res.likes.length)
+            card.toggleCardLike()
         })
         .catch(err => console.log(err))
     } else {
         api.setCardLike(card)
         .then(res => {
-            this._cardLikeCounter.textContent = res.likes.length;
-            card._cardLike.classList.add('place__like_active');
+            card.setCardCounter(res.likes.length)
+            card.toggleCardLike()
         })
         .catch(err => console.log(err))
     }
@@ -146,15 +145,15 @@ buttonAdd.addEventListener('click', () => {
     popupFormCard.open()
 });
 
-Promise.all([api.getUserInfo(), api.getInitialCards()])
-.then(values => {
-    userInform.setUserInfo(values[0]);
-    cardList = new Section({
-    items: values[1],
+const cardList = new Section({
         renderer: (place) => {
             return createCard(place)
         }
     }, cardsSelector);
-cardList.renderItem();
+
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+.then(values => {
+    userInform.setUserInfo(values[0]);
+    cardList.renderItem(values[1]);
 })
 .catch(err => console.log(err))

@@ -10,7 +10,6 @@ export default class PopupWithConfirmation extends Popup {
         if(this._buttonConfirmDelete) {
             this._buttonConfirmDelete.addEventListener('click', () => {
                 this.confirmedDelete(this.card)
-                this.close()
             })
         }
     }
